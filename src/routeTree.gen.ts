@@ -11,13 +11,13 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as PortfolioIndexImport } from './routes/portfolio/index'
+import { Route as StocksIndexImport } from './routes/stocks/index'
 
 // Create/Update Routes
 
-const PortfolioIndexRoute = PortfolioIndexImport.update({
-  id: '/portfolio/',
-  path: '/portfolio/',
+const StocksIndexRoute = StocksIndexImport.update({
+  id: '/stocks/',
+  path: '/stocks/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -25,11 +25,11 @@ const PortfolioIndexRoute = PortfolioIndexImport.update({
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/portfolio/': {
-      id: '/portfolio/'
-      path: '/portfolio'
-      fullPath: '/portfolio'
-      preLoaderRoute: typeof PortfolioIndexImport
+    '/stocks/': {
+      id: '/stocks/'
+      path: '/stocks'
+      fullPath: '/stocks'
+      preLoaderRoute: typeof StocksIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -38,33 +38,33 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export interface FileRoutesByFullPath {
-  '/portfolio': typeof PortfolioIndexRoute
+  '/stocks': typeof StocksIndexRoute
 }
 
 export interface FileRoutesByTo {
-  '/portfolio': typeof PortfolioIndexRoute
+  '/stocks': typeof StocksIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
-  '/portfolio/': typeof PortfolioIndexRoute
+  '/stocks/': typeof StocksIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/portfolio'
+  fullPaths: '/stocks'
   fileRoutesByTo: FileRoutesByTo
-  to: '/portfolio'
-  id: '__root__' | '/portfolio/'
+  to: '/stocks'
+  id: '__root__' | '/stocks/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-  PortfolioIndexRoute: typeof PortfolioIndexRoute
+  StocksIndexRoute: typeof StocksIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  PortfolioIndexRoute: PortfolioIndexRoute,
+  StocksIndexRoute: StocksIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -77,11 +77,11 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/portfolio/"
+        "/stocks/"
       ]
     },
-    "/portfolio/": {
-      "filePath": "portfolio/index.tsx"
+    "/stocks/": {
+      "filePath": "stocks/index.tsx"
     }
   }
 }
