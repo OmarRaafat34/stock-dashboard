@@ -19,6 +19,13 @@ Before getting started, ensure you have the following installed:
    cd stock-dashboard
 
 
+### .env
+
+if not included, create .env file at the root of the project and include this:
+VITE_POLYGON_BASE_URL=https://api.polygon.io
+VITE_POLYGON_API_KEY=K7jvo4C1pjnYpMYVerY1nC1pXXkVWSyB
+
+
 ### State Management
 
 I used React Query
