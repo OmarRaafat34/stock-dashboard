@@ -1,54 +1,46 @@
-# React + TypeScript + Vite
+# Stock Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a stock dashboard application built with **React**, **TypeScript**, and **React Query**. It allows users to view, buy, and sell stocks, and provides real-time updates via a stock API.
 
-Currently, two official plugins are available:
+## Setup and Running the Application
+- npm install
+- npm run dev
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
+Before getting started, ensure you have the following installed:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Node.js** (version 14 or above)
+- **npm** (or **yarn** if preferred)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Installation
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. Clone the repository:
+   git clone https://github.com/your-repository/stock-dashboard.git
+   cd stock-dashboard
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### State Management
+
+I used React Query
+I chose React Query for managing server-state and API interactions in this application due to the following reasons:
+
+Simplified Data Fetching: React Query provides powerful hooks like useQuery and useMutation, which streamline data fetching and mutations. This made it easy to implement the logic for fetching real-time stock prices, handling buy and sell actions, and managing the data lifecycle.
+
+Automatic Caching and Background Sync: Stock data is subject to frequent updates. React Query automatically caches the data and ensures the UI is kept in sync with the server, even when users interact with the app in different ways (e.g., buying/selling stocks). It also handles background refetching to ensure the data is always up-to-date without manual intervention.
+
+Error Handling: React Query provides built-in mechanisms for managing error states, retries, and fallback logic. This is useful when working with external APIs, where errors or network issues might occur.
+
+
+Strengths of React Query
+Automatic Caching and Background Sync: React Query caches data by default and keeps it synchronized with the server, reducing the need for manual state updates or refetching.
+
+Declarative Data Fetching: Data fetching logic is handled declaratively within the components. The API calls are tied to React components, ensuring the UI is updated automatically when the data changes.
+
+Improved Developer Experience: React Query provides built-in hooks like useQuery, useMutation which make it easier to manage API calls, handle loading/error states, and trigger mutations.
+
+Automatic Retries and Polling: React Query offers automatic retries for failed requests and background polling, making it ideal for apps that need real-time data or are prone to intermittent failures.
+
+Weaknesses of React Query
+Not Ideal for All State: React Query is best suited for managing remote data or server-side state, but it’s not designed to handle all of the application's state. Local UI state (like form input, toggle states, etc.) should still be managed using React’s useState or other local state management solutions.
+
+
